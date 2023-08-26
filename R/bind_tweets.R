@@ -146,6 +146,7 @@ convert_json <- function(data_file, output_format = "tidy",
     colnames(usermain) <- paste0("user_", colnames(usermain))
     tweet_metrics <- tibble::tibble(tweet_id = raw$tweet.public_metrics.retweet_count$tweet_id,
                                     retweet_count = raw$tweet.public_metrics.retweet_count$data,
+                                    reply_count = raw$tweet.public_metrics.reply_count$data,
                                     like_count = raw$tweet.public_metrics.like_count$data,
                                     quote_count = raw$tweet.public_metrics.quote_count$data,
                                     impression_count = raw$tweet.public_metrics.impression_count$data)
@@ -189,6 +190,7 @@ convert_json <- function(data_file, output_format = "tidy",
       tweet_metrics <- tibble::tibble(tweet_id = raw$tweet.public_metrics.retweet_count$tweet_id,
                                       retweet_count = raw$tweet.public_metrics.retweet_count$data,
                                       like_count = raw$tweet.public_metrics.like_count$data,
+                                      reply_count = raw$tweet.public_metrics.reply_count$data,
                                       quote_count = raw$tweet.public_metrics.quote_count$data,
                                       impression_count = raw$tweet.public_metrics.impression_count$data) 
       res <- res %>% dplyr::left_join(tweet_metrics, by = "tweet_id")
